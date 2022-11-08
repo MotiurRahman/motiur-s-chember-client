@@ -4,7 +4,8 @@ import { FaGoogle } from "react-icons/fa";
 import { UserContext } from "../../../AuthContext/AuthContext";
 
 const Login = () => {
-  const { user, loader, signIn, googleLogin } = useContext(UserContext);
+  const { user, loader, setLoader, signIn, googleLogin } =
+    useContext(UserContext);
   const [message, setMessage] = useState("");
   const [show, setShow] = useState(true);
   const nevigate = useNavigate();
@@ -27,6 +28,9 @@ const Login = () => {
       .catch((error) => {
         setShow(true);
         setMessage(error.message);
+      })
+      .finally(() => {
+        setLoader(false);
       });
   };
 

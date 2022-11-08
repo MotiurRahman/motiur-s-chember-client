@@ -1,14 +1,11 @@
 import React from "react";
 import banner from "../../assets/images/law.jpg";
+import "./Banner.css";
 
 const Banner = () => {
   return (
     <div>
-      <div className="carousel rounded-box">
-        <div className="carousel-item w-full">
-          <img className="w-full h-1/2" src={banner} alt="Burger" />
-        </div>
-      </div>
+      <div className="w-full banner"></div>
     </div>
   );
 };

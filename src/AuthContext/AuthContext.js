@@ -14,24 +14,24 @@ const auth = getAuth(app);
 export const UserContext = createContext();
 const AuthContext = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loader, setLaoder] = useState(true);
+  const [loader, setLoader] = useState(true);
 
   const googleProvider = new GoogleAuthProvider();
   // Create User using email and password
   const creteUser = (email, password) => {
-    setLaoder(true);
+    setLoader(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   // Sign IN
   const signIn = (email, password) => {
-    setLaoder(true);
+    setLoader(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   // Login user using google
   const googleLogin = () => {
-    setLaoder(true);
+    setLoader(true);
     return signInWithPopup(auth, googleProvider);
   };
 
@@ -51,12 +51,20 @@ const AuthContext = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLaoder(false);
+      setLoader(false);
     });
     return () => unsubscribe();
   }, []);
 
-  const authValue = { user, loader, creteUser, signIn, googleLogin, logout };
+  const authValue = {
+    user,
+    loader,
+    setLoader,
+    creteUser,
+    signIn,
+    googleLogin,
+    logout,
+  };
   return (
     <UserContext.Provider value={authValue}>{children}</UserContext.Provider>
   );

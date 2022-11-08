@@ -33,8 +33,20 @@ const Header = () => {
                 <a>All Services</a>
               </li>
 
+              {user && (
+                <>
+                  <li>
+                    <Link> My reviews</Link>
+                  </li>
+                  <li>
+                    <Link>Add service</Link>
+                  </li>
+                </>
+              )}
               <li>
-                <a>Item 3</a>
+                <p className="mr-4 block md:hidden">
+                  Logged in with : {user?.email}
+                </p>
               </li>
             </ul>
           </div>
@@ -48,15 +60,24 @@ const Header = () => {
               <a>All Services</a>
             </li>
 
-            <li>
-              <a>Item 3</a>
-            </li>
+            {user && (
+              <>
+                <li>
+                  <Link> My reviews</Link>
+                </li>
+                <li>
+                  <Link>Add service</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <div className="navbar-end">
           {user ? (
             <>
-              <p className="mr-4">Logged in with : {user.email}</p>
+              <p className="mr-4 hidden md:block">
+                Logged in with : {user.email}
+              </p>
               <Link onClick={logout} className="btn">
                 Logout
               </Link>
