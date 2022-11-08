@@ -6,7 +6,7 @@ const Banner = () => {
     <div>
       <div className="carousel rounded-box">
         <div className="carousel-item w-full">
-          <img className="w-full h-2/3" src={banner} alt="Burger" />
+          <img className="w-full h-1/2" src={banner} alt="Burger" />
         </div>
       </div>
     </div>

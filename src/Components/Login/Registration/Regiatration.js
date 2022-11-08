@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaGoogle } from "react-icons/fa";
 
 const Regiatration = () => {
   return (
@@ -8,6 +9,17 @@ const Regiatration = () => {
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body" data-theme="valentine">
             <h1 className="text-5xl font-bold">Register here!</h1>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Full Name</span>
+              </label>
+              <input
+                type="text"
+                name="fullName"
+                placeholder="Full Name"
+                className="input input-bordered"
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -44,8 +56,11 @@ const Regiatration = () => {
                 {/* <a href="#" className="label-text-alt link link-hover">
                 Forgot password?
               </a> */}
-                <p className="label-text-alt link link-hover">
-                  Already have an account? <Link to="/login">Login</Link>
+                <p>
+                  Already have an account?{" "}
+                  <Link className="label-text-alt link link-hover" to="/login">
+                    Login
+                  </Link>
                 </p>
               </label>
             </div>
@@ -53,7 +68,9 @@ const Regiatration = () => {
               <button className="btn btn-primary">Create an account</button>
             </div>
             <div className="form-control mt-3">
-              <button className="btn btn-primary">Login with Google</button>
+              <button className="btn btn-primary">
+                <FaGoogle className="mr-2"></FaGoogle> Login with Google
+              </button>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import lawBook from "../../../assets/images/lawBook.jpg";
+import { FaGoogle } from "react-icons/fa";
 
 const Login = () => {
   return (
@@ -32,9 +32,14 @@ const Login = () => {
                 {/* <a href="#" className="label-text-alt link link-hover">
                   Forgot password?
                 </a> */}
-                <p className="label-text-alt link link-hover">
+                <p>
                   Don't have an account?{" "}
-                  <Link to="/registration">Create an account</Link>
+                  <Link
+                    className="label-text-alt link link-hover"
+                    to="/registration"
+                  >
+                    Create an account
+                  </Link>
                 </p>
               </label>
             </div>
@@ -42,7 +47,9 @@ const Login = () => {
               <button className="btn btn-primary">Login</button>
             </div>
             <div className="form-control mt-3">
-              <button className="btn btn-primary">Login with Google</button>
+              <button className="btn btn-primary">
+                <FaGoogle className="mr-2"></FaGoogle> Login with Google
+              </button>
             </div>
           </div>
         </div>
