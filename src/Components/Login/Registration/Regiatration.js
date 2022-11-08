@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { UserContext } from "../../../AuthContext/AuthContext";
 
 const Regiatration = () => {
-  const { user, loader, creteUser } = useContext(UserContext);
+  const { user, loader, creteUser, googleLogin } = useContext(UserContext);
   const [message, setMessage] = useState("");
   const [show, setShow] = useState(true);
   const nevigate = useNavigate();
@@ -40,6 +40,17 @@ const Regiatration = () => {
         const errorMessage = error.message;
         setMessage(errorMessage);
       });
+  };
+
+  // Handle Google Login
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        console.log(result.user);
+        setMessage("");
+        nevigate("/");
+      })
+      .catch((error) => setMessage(error.message));
   };
   return (
     <div>
@@ -109,7 +120,7 @@ const Regiatration = () => {
               </div>
             </form>
             <div className="form-control mt-3">
-              <button className="btn btn-primary">
+              <button onClick={handleGoogleLogin} className="btn btn-primary">
                 <FaGoogle className="mr-2"></FaGoogle> Login with Google
               </button>
             </div>

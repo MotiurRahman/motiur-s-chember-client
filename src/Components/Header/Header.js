@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../AuthContext/AuthContext";
 
 const Header = () => {
+  const { user, logout } = useContext(UserContext);
   return (
     <div data-theme="valentine">
       <div className="navbar">
@@ -52,9 +54,18 @@ const Header = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to="/login" className="btn">
-            Login
-          </Link>
+          {user ? (
+            <>
+              <p className="mr-4">Logged in with : {user.email}</p>
+              <Link onClick={logout} className="btn">
+                Logout
+              </Link>
+            </>
+          ) : (
+            <Link to="/login" className="btn">
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import { FaGoogle } from "react-icons/fa";
 import { UserContext } from "../../../AuthContext/AuthContext";
 
 const Login = () => {
-  const { user, loader, signIn } = useContext(UserContext);
+  const { user, loader, signIn, googleLogin } = useContext(UserContext);
   const [message, setMessage] = useState("");
   const [show, setShow] = useState(true);
   const nevigate = useNavigate();
@@ -28,6 +28,17 @@ const Login = () => {
         setShow(true);
         setMessage(error.message);
       });
+  };
+
+  // Handle Google Login
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((result) => {
+        console.log(result.user);
+        setMessage("");
+        nevigate("/");
+      })
+      .catch((error) => setMessage(error.message));
   };
   return (
     <div>
@@ -84,7 +95,7 @@ const Login = () => {
               </div>
             </form>
             <div className="form-control mt-3">
-              <button className="btn btn-primary">
+              <button onClick={handleGoogleLogin} className="btn btn-primary">
                 <FaGoogle className="mr-2"></FaGoogle> Login with Google
               </button>
             </div>
