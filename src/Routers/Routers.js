@@ -16,6 +16,9 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
+        loader: () => {
+          return fetch("http://localhost:8000/service_withlimit");
+        },
         element: <Home></Home>,
       },
       {
