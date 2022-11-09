@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useTitle from "../../hooks/useTitle";
 
 const Service = ({ service }) => {
+  useTitle("Services");
   const { _id, serviceTitle, serviceImgUrl, servicePrice, serviceDesc } =
     service;
   return (
-    <div className="card card-compact w-96 bg-base-100 shadow-xl">
+    <div className="card card-compact w-auto bg-base-100 shadow-xl">
       <figure>
         <img className="h-28" src={serviceImgUrl} alt="Shoes" />
       </figure>

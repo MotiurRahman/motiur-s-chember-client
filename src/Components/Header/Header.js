@@ -44,7 +44,7 @@ const Header = () => {
                 </>
               )}
               <li>
-                <Link>Blogs</Link>
+                <Link to="/blogs">Blogs</Link>
               </li>
               {user && (
                 <li>
@@ -76,7 +76,7 @@ const Header = () => {
               </>
             )}
             <li>
-              <Link>Blogs</Link>
+              <Link to="/blogs">Blogs</Link>
             </li>
           </ul>
         </div>

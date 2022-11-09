@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import useTitle from "../../hooks/useTitle";
 
 const AddService = () => {
+  useTitle("AddService");
   const [show, setShow] = useState(true);
   const handleAddServiceBtn = (e) => {
     setShow(false);

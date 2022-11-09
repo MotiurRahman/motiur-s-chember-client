@@ -3,8 +3,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { UserContext } from "../../../AuthContext/AuthContext";
 import { setAuthToken } from "../../../authAPI/auth";
+import useTitle from "../../../hooks/useTitle";
 
 const Login = () => {
+  useTitle("Login");
   const { user, loader, setLoader, signIn, googleLogin } =
     useContext(UserContext);
   const [message, setMessage] = useState("");

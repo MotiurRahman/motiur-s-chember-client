@@ -3,8 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import toast from "react-hot-toast";
 import { UserContext } from "../../../AuthContext/AuthContext";
+import useTitle from "../../../hooks/useTitle";
 
 const Regiatration = () => {
+  useTitle("Registration");
   const { user, loader, creteUser, googleLogin } = useContext(UserContext);
   const [message, setMessage] = useState("");
   const [show, setShow] = useState(true);
