@@ -30,7 +30,7 @@ const Header = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a>All Services</a>
+                <Link to="/services">All Services</Link>
               </li>
 
               {user && (
@@ -62,7 +62,7 @@ const Header = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal p-0">
             <li>
-              <a>All Services</a>
+              <Link to="/services">All Services</Link>
             </li>
 
             {user && (

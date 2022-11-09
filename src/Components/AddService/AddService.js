@@ -1,7 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 const AddService = () => {
-  const handleAddServiceBtn = () => {};
+  const [show, setShow] = useState(true);
+  const handleAddServiceBtn = (e) => {
+    setShow(false);
+    e.preventDefault();
+    const form = e.target;
+    const serviceTitle = form.serviceTitle.value;
+    const serviceImgUrl = form.serviceImgUrl.value;
+    const servicePrice = form.servicePrice.value;
+    const serviceDesc = form.serviceDesc.value;
+
+    const serviceDetails = {
+      serviceTitle,
+      serviceImgUrl,
+      servicePrice,
+      serviceDesc,
+    };
+    console.log(serviceDetails);
+    const url = "http://localhost:8000/add_service";
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(serviceDetails),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          setShow(true);
+          form.reset();
+          toast("Your service has been added successfully");
+        }
+      })
+      .catch((error) => setShow(true));
+  };
   return (
     <div>
       <div className="my-5 flex flex-col items-center align-middle mx-auto lg:w-2/4 w-11/12 md:w-3/4">
@@ -60,13 +96,23 @@ const AddService = () => {
               required
             ></textarea>
           </div>
-          <button
-            type="submit"
-            className="btn btn-primary mt-5 w-1/2 text-white"
-            data-theme="valentine"
-          >
-            Add Service
-          </button>
+
+          {show ? (
+            <button
+              type="submit"
+              className="btn btn-primary mt-5 w-1/2 text-white"
+              data-theme="valentine"
+            >
+              Add Service
+            </button>
+          ) : (
+            <button
+              data-theme="valentine"
+              className="btn btn-primary mt-5 w-1/2 text-white loading"
+            >
+              Processing ...
+            </button>
+          )}
         </form>
       </div>
     </div>

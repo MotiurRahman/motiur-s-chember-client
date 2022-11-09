@@ -15,6 +15,7 @@ export const setAuthToken = (user) => {
 };
 
 // headers: {
+//   method:"POST"
 //      "Content-Type": "application/json",
 //     authorization: `Bearer ${localStorage.getItem("chember-token")}`,
 //   },
