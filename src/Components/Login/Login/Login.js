@@ -1,14 +1,17 @@
 import React, { useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa";
 import { UserContext } from "../../../AuthContext/AuthContext";
+import { setAuthToken } from "../../../authAPI/auth";
 
 const Login = () => {
   const { user, loader, setLoader, signIn, googleLogin } =
     useContext(UserContext);
   const [message, setMessage] = useState("");
   const [show, setShow] = useState(true);
-  const nevigate = useNavigate();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   // Handle User Login
   const handleLogin = (e) => {
@@ -23,7 +26,8 @@ const Login = () => {
         setShow(true);
         setMessage("");
         console.log(result.user);
-        nevigate("/");
+        setAuthToken(result.user);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setShow(true);
@@ -40,7 +44,8 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         setMessage("");
-        nevigate("/");
+        setAuthToken(result.user);
+        navigate(from, { replace: true });
       })
       .catch((error) => setMessage(error.message));
   };

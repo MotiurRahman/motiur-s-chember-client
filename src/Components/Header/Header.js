@@ -39,15 +39,20 @@ const Header = () => {
                     <Link> My reviews</Link>
                   </li>
                   <li>
-                    <Link>Add service</Link>
+                    <Link to="/add_service">Add service</Link>
                   </li>
                 </>
               )}
               <li>
-                <p className="mr-4 block md:hidden">
-                  Logged in with : {user?.email}
-                </p>
+                <Link>Blogs</Link>
               </li>
+              {user && (
+                <li>
+                  <p className="mr-4 block md:hidden">
+                    Logged in with : {user?.email}
+                  </p>
+                </li>
+              )}
             </ul>
           </div>
           <Link to="/" className="btn btn-ghost normal-case text-xl">
@@ -66,10 +71,13 @@ const Header = () => {
                   <Link> My reviews</Link>
                 </li>
                 <li>
-                  <Link>Add service</Link>
+                  <Link to="/add_service">Add service</Link>
                 </li>
               </>
             )}
+            <li>
+              <Link>Blogs</Link>
+            </li>
           </ul>
         </div>
         <div className="navbar-end">
