@@ -7,6 +7,7 @@ import Regiatration from "../Components/Login/Registration/Regiatration";
 import PageNotFound from "../Components/PageNotFound/PageNotFound";
 import Services from "../Components/Services/Services";
 import ServicesDetails from "../Components/Services/ServicesDetails";
+import UserReview from "../Components/UserReview/UserReview";
 import Main from "../Layout/Main";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
@@ -55,6 +56,14 @@ const router = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blog></Blog>,
+      },
+      {
+        path: "/myreviews",
+        element: (
+          <PrivateRoute>
+            <UserReview></UserReview>
+          </PrivateRoute>
+        ),
       },
       {
         path: "*",

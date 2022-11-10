@@ -34,7 +34,7 @@ const Footer = () => {
               <span className="mr-2">
                 <FaMapMarkerAlt></FaMapMarkerAlt>
               </span>
-              <span class="text">
+              <span className="text">
                 545-West Kaziparaa <br /> Dhaka- 1216
               </span>
             </li>
@@ -42,14 +42,14 @@ const Footer = () => {
               <span className="mr-2">
                 <FaMobileAlt></FaMobileAlt>
               </span>
-              <span class="text">+8801723306519</span>
+              <span className="text">+8801723306519</span>
             </li>
             <li className="flex items-center">
               <span className="mr-2">
                 {" "}
                 <FaRegEnvelope></FaRegEnvelope>
               </span>
-              <span class="text">motiur.mbstu@gmail.com</span>
+              <span className="text">motiur.mbstu@gmail.com</span>
             </li>
           </ul>
         </div>

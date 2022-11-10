@@ -36,10 +36,10 @@ const Header = () => {
               {user && (
                 <>
                   <li>
-                    <Link> My reviews</Link>
+                    <Link to="/myreviews"> My Reviews</Link>
                   </li>
                   <li>
-                    <Link to="/add_service">Add service</Link>
+                    <Link to="/add_service">Add Service</Link>
                   </li>
                 </>
               )}
@@ -68,10 +68,10 @@ const Header = () => {
             {user && (
               <>
                 <li>
-                  <Link> My reviews</Link>
+                  <Link to="/myreviews"> My Reviews</Link>
                 </li>
                 <li>
-                  <Link to="/add_service">Add service</Link>
+                  <Link to="/add_service">Add Service</Link>
                 </li>
               </>
             )}
