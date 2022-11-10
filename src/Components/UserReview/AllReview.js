@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const AllReview = ({ myreview, handleDeleteReview }) => {
   const {
@@ -11,9 +12,6 @@ const AllReview = ({ myreview, handleDeleteReview }) => {
     service_id,
     serviceTitle,
   } = myreview;
-
-  // Edit Review
-  const handleEditReview = (id) => {};
 
   return (
     <div
@@ -28,12 +26,11 @@ const AllReview = ({ myreview, handleDeleteReview }) => {
         <h1 className="font-semibold"> Service Title: {serviceTitle}</h1>
         <p>{review}</p>
         <div className="card-actions justify-end">
-          <button
-            onClick={() => handleEditReview(_id)}
-            className="btn btn-outline btn-secondary"
-          >
-            Edit
-          </button>
+          <Link to={`/myreviews/${_id}`}>
+            {" "}
+            <button className="btn btn-outline btn-secondary">Edit</button>
+          </Link>
+
           <button
             onClick={() => handleDeleteReview(_id)}
             className="btn btn-outline btn-secondary"

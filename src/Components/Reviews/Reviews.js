@@ -14,14 +14,6 @@ const Reviews = ({ allreviewinfo }) => {
       <p className="text-center">{displayName}</p>
       <div className="card-body">
         <p>{review}</p>
-        {/* <div className="card-actions justify-end">
-          {user && (
-            <Link to="">
-              {" "}
-              <button className="btn btn-outline btn-secondary">Edit</button>
-            </Link>
-          )}
-        </div> */}
       </div>
     </div>
   );

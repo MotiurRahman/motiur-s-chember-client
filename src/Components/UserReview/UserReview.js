@@ -8,7 +8,11 @@ const UserReview = () => {
   const [reviewData, setReviewData] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/myreview?email=${user.email}`)
+    fetch(`http://localhost:8000/myreview?email=${user.email}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("chember-token")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => setReviewData(data));
   }, []);
