@@ -14,11 +14,11 @@ const UpdateReview = () => {
     const review = form.review.value;
     console.log(review);
     fetch(
-      `https://b6a11-service-review-server-side-motiur-rahman-motiurrahman.vercel.app/${_id}`,
+      `https://b6a11-service-review-server-side-motiur-rahman-motiurrahman.vercel.app/myreview/${_id}`,
       {
         method: "PATCH",
         headers: {
-          "content-type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ review }),
       }

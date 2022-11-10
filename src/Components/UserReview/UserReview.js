@@ -38,15 +38,22 @@ const UserReview = () => {
     }
   };
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-5">
-      {reviewData?.map((myreview) => (
-        <AllReview
-          key={myreview._id}
-          myreview={myreview}
-          handleDeleteReview={handleDeleteReview}
-        ></AllReview>
-      ))}
-    </div>
+    <>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-5">
+        {reviewData?.map((myreview) => (
+          <AllReview
+            key={myreview._id}
+            myreview={myreview}
+            handleDeleteReview={handleDeleteReview}
+          ></AllReview>
+        ))}
+      </div>
+      {reviewData.length || (
+        <h1 className="text-3xl font-bold text-center my-auto">
+          No reviews were added
+        </h1>
+      )}
+    </>
   );
 };
 

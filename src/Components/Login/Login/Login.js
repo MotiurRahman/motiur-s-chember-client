@@ -28,6 +28,7 @@ const Login = () => {
         setShow(true);
         setMessage("");
         console.log(result.user);
+        const currentUser = { currentUser: result.user.email };
         setAuthToken(result.user);
         navigate(from, { replace: true });
       })

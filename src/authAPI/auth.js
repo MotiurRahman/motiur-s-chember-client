@@ -8,11 +8,14 @@ export const setAuthToken = (user) => {
     "https://b6a11-service-review-server-side-motiur-rahman-motiurrahman.vercel.app/jwt",
     {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(currentUser),
     }
   )
-    .then((res) => res.json())
+    .then((res) => {
+      // console.log(res.json());
+      return res.json();
+    })
     .then((data) => {
       localStorage.setItem("chember-token", data.token);
       console.log("chember-token", localStorage.getItem("chember-token"));
