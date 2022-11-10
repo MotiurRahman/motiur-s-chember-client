@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useTitle from "../../hooks/useTitle";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const Service = ({ service }) => {
   useTitle("Services");
@@ -9,7 +10,16 @@ const Service = ({ service }) => {
   return (
     <div className="card card-compact w-auto bg-base-100 shadow-xl">
       <figure>
-        <img className="h-28" src={serviceImgUrl} alt="Shoes" />
+        <PhotoProvider>
+          <PhotoView src={serviceImgUrl}>
+            <img
+              style={{ cursor: "pointer" }}
+              className="h-28"
+              src={serviceImgUrl}
+              alt="Shoes"
+            />
+          </PhotoView>
+        </PhotoProvider>
       </figure>
       <div className="card-body">
         <h2 className="card-title">Title: {serviceTitle}</h2>

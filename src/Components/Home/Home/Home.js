@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import useTitle from "../../../hooks/useTitle";
 import Banner from "../../Banner/Banner";
 import Service from "../../Services/Service";
-import Services from "../../Services/Services";
 
 const Home = () => {
   useTitle("Home");
@@ -51,6 +50,14 @@ const Home = () => {
             {services.map((service) => (
               <Service key={service.key} service={service}></Service>
             ))}
+          </div>
+          <div className="flex">
+            <Link to="/services" className="mx-auto">
+              {" "}
+              <button className="btn btn-active btn-primary btn-wide">
+                See All
+              </button>
+            </Link>
           </div>
         </div>
       </div>
