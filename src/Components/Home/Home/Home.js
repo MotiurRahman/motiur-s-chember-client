@@ -10,7 +10,9 @@ const Home = () => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    fetch("http://localhost:8000/service_count")
+    fetch(
+      "https://b6a11-service-review-server-side-motiur-rahman-motiurrahman.vercel.app/service_count"
+    )
       .then((res) => res.json())
       .then((data) => setCount(data.totalItem));
   }, []);

@@ -6,23 +6,27 @@ import AllReview from "./AllReview";
 const UserReview = () => {
   const { user } = useContext(UserContext);
   const [reviewData, setReviewData] = useState([]);
-
+  console.log("chember-token", localStorage.getItem("chember-token"));
+  //https://b6a11-service-review-server-side-motiur-rahman-motiurrahman.vercel.app
   useEffect(() => {
-    fetch(`http://localhost:8000/myreview?email=${user.email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem("chember-token")}`,
-      },
-    })
-      .then((res) => res.json())
+    fetch(
+      `https://b6a11-service-review-server-side-motiur-rahman-motiurrahman.vercel.app/myreviews?email=${user.email}`
+    )
+      .then((res) => {
+        return res.json();
+      })
       .then((data) => setReviewData(data));
   }, []);
 
   // Delete Review
   const handleDeleteReview = (id) => {
     if (window.confirm("Would you like to delete this review?")) {
-      fetch(`http://localhost:8000/myreview/${id}`, {
-        method: "DELETE",
-      })
+      fetch(
+        `https://b6a11-service-review-server-side-motiur-rahman-motiurrahman.vercel.app/myreview/${id}`,
+        {
+          method: "DELETE",
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount > 0) {
@@ -35,7 +39,7 @@ const UserReview = () => {
   };
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-5">
-      {reviewData.map((myreview) => (
+      {reviewData?.map((myreview) => (
         <AllReview
           key={myreview._id}
           myreview={myreview}

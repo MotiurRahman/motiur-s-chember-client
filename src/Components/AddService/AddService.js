@@ -21,7 +21,8 @@ const AddService = () => {
       serviceDesc,
     };
     console.log(serviceDetails);
-    const url = "http://localhost:8000/add_service";
+    const url =
+      "https://b6a11-service-review-server-side-motiur-rahman-motiurrahman.vercel.app/add_service";
 
     fetch(url, {
       method: "POST",

@@ -33,13 +33,16 @@ const ServicesDetails = () => {
       photoURL,
     };
 
-    fetch("http://localhost:8000/review", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(reviewDetails),
-    })
+    fetch(
+      "https://b6a11-service-review-server-side-motiur-rahman-motiurrahman.vercel.app/review",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(reviewDetails),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.acknowledged) {
@@ -52,7 +55,9 @@ const ServicesDetails = () => {
 
   // Handle show review
   useEffect(() => {
-    fetch(`http://localhost:8000/review/${_id}`)
+    fetch(
+      `https://b6a11-service-review-server-side-motiur-rahman-motiurrahman.vercel.app/review/${_id}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setAllReview(data);

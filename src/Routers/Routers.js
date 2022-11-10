@@ -20,7 +20,9 @@ const router = createBrowserRouter([
       {
         path: "/",
         loader: () => {
-          return fetch("http://localhost:8000/service_withlimit");
+          return fetch(
+            "https://b6a11-service-review-server-side-motiur-rahman-motiurrahman.vercel.app/service_withlimit"
+          );
         },
         element: <Home></Home>,
       },
@@ -43,14 +45,18 @@ const router = createBrowserRouter([
       {
         path: "/services",
         loader: () => {
-          return fetch("http://localhost:8000/service");
+          return fetch(
+            "https://b6a11-service-review-server-side-motiur-rahman-motiurrahman.vercel.app/service"
+          );
         },
         element: <Services></Services>,
       },
       {
         path: "/service/:id",
         loader: ({ params }) => {
-          return fetch(`http://localhost:8000/service/${params.id}`);
+          return fetch(
+            `https://b6a11-service-review-server-side-motiur-rahman-motiurrahman.vercel.app/service/${params.id}`
+          );
         },
         element: <ServicesDetails></ServicesDetails>,
       },
@@ -67,7 +73,12 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/myreviews/:id",
+        path: "/myreview/:id",
+        loader: ({ params }) => {
+          return fetch(
+            `https://b6a11-service-review-server-side-motiur-rahman-motiurrahman.vercel.app/myreview/${params.id}`
+          );
+        },
         element: (
           <PrivateRoute>
             <UpdateReview></UpdateReview>

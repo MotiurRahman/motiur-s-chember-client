@@ -26,7 +26,7 @@ const AllReview = ({ myreview, handleDeleteReview }) => {
         <h1 className="font-semibold"> Service Title: {serviceTitle}</h1>
         <p>{review}</p>
         <div className="card-actions justify-end">
-          <Link to={`/myreviews/${_id}`}>
+          <Link to={`/myreview/${_id}`}>
             {" "}
             <button className="btn btn-outline btn-secondary">Edit</button>
           </Link>
