@@ -27,6 +27,15 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
+        path: "/home",
+        loader: () => {
+          return fetch(
+            "https://b6a11-service-review-server-side-motiur-rahman-motiurrahman.vercel.app/service_withlimit"
+          );
+        },
+        element: <Home></Home>,
+      },
+      {
         path: "/login",
         element: <Login></Login>,
       },
