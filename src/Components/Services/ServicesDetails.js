@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useLocation } from "react-router-dom";
 import { UserContext } from "../../AuthContext/AuthContext";
 import Reviews from "../Reviews/Reviews";
 
@@ -11,6 +11,7 @@ const ServicesDetails = () => {
     serviceDetails[0];
 
   const [allreview, setAllReview] = useState([]);
+  const location = useLocation();
 
   // Handle add review
   const handleAddReview = (e) => {
@@ -100,7 +101,12 @@ const ServicesDetails = () => {
                     </button>
                   </form>
                 ) : (
-                  <Link className="text-red-500" to="/login">
+                  <Link
+                    className="text-red-500"
+                    to="/login"
+                    state={{ from: location }}
+                    replace
+                  >
                     Please login to add a review
                   </Link>
                 )}
