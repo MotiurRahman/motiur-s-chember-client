@@ -7,7 +7,7 @@ const Reviews = ({ allreviewinfo }) => {
   const { displayName, email, photoURL, review, service_id, _id } =
     allreviewinfo;
   return (
-    <div className="card card-compact w-96 bg-base-100 shadow-xl mt-4 p-5">
+    <div className="card card-compact w-11/12 md:w-96 bg-base-100 shadow-xl mt-4 p-5">
       <figure>
         <img className="rounded-full h-10" src={photoURL} alt="profileImage" />
       </figure>

@@ -15,7 +15,7 @@ const AllReview = ({ myreview, handleDeleteReview }) => {
 
   return (
     <div
-      className="card card-compact w-96 bg-base-100 shadow-xl mt-4 p-5"
+      className="card card-compact w-11/12 md:w-96 bg-base-100 shadow-xl mt-4 p-5"
       data-theme="valentine"
     >
       <figure>

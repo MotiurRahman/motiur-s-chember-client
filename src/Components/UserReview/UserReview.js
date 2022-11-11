@@ -6,17 +6,35 @@ import AllReview from "./AllReview";
 const UserReview = () => {
   const { user } = useContext(UserContext);
   const [reviewData, setReviewData] = useState([]);
-  console.log("chember-token", localStorage.getItem("chember-token"));
+  const [isempty, setIsempty] = useState(true);
+  const [message, setMessge] = useState("No reviews were added");
+
+  //  console.log("chember-token", localStorage.getItem("chember-token"));
   //https://b6a11-service-review-server-side-motiur-rahman-motiurrahman.vercel.app
   useEffect(() => {
     fetch(
-      `https://b6a11-service-review-server-side-motiur-rahman-motiurrahman.vercel.app/myreviews?email=${user.email}`
+      `https://b6a11-service-review-server-side-motiur-rahman-motiurrahman.vercel.app/myreviews?email=${user.email}`,
+      {
+        headers: {
+          authorization: `Bearer ${localStorage.getItem("chember-token")}`,
+        },
+      }
     )
       .then((res) => {
         return res.json();
       })
-      .then((data) => setReviewData(data));
-  }, []);
+      .then((data) => {
+        console.log("data", data);
+        setReviewData(data);
+        if (data.length != 0) {
+          setIsempty(false);
+          setMessge("");
+        } else {
+          setIsempty(true);
+          setMessge("No reviews were added");
+        }
+      });
+  }, [reviewData]);
 
   // Delete Review
   const handleDeleteReview = (id) => {
@@ -39,7 +57,7 @@ const UserReview = () => {
   };
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-5 place-items-center">
         {reviewData?.map((myreview) => (
           <AllReview
             key={myreview._id}
@@ -48,10 +66,8 @@ const UserReview = () => {
           ></AllReview>
         ))}
       </div>
-      {reviewData.length || (
-        <h1 className="text-3xl font-bold text-center my-auto">
-          No reviews were added
-        </h1>
+      {isempty && (
+        <h1 className="text-3xl font-bold text-center my-auto">{message}</h1>
       )}
     </>
   );
