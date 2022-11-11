@@ -1,4 +1,4 @@
-# The name of this platform is Motiur's Chember
+# The name of this website is Motiur's Chember
 
 # This website link - https://motiur-chember.web.app
 
