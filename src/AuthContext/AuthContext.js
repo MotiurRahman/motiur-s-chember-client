@@ -7,6 +7,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import app from "../Firebase/Firebase.config";
 
@@ -23,6 +24,10 @@ const AuthContext = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
+  const updateUser = (profile) => {
+    return updateProfile(auth.currentUser, profile);
+  };
+
   // Sign IN
   const signIn = (email, password) => {
     setLoader(true);
@@ -37,13 +42,7 @@ const AuthContext = ({ children }) => {
 
   //Sign out
   const logout = () => {
-    signOut(auth)
-      .then(() => {
-        // Sign-out successful.
-      })
-      .catch((error) => {
-        // An error happened.
-      });
+    return signOut(auth);
   };
 
   // Manage users
@@ -61,6 +60,7 @@ const AuthContext = ({ children }) => {
     loader,
     setLoader,
     creteUser,
+    updateUser,
     signIn,
     googleLogin,
     logout,

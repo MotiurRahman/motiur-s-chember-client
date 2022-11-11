@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../AuthContext/AuthContext";
 import useTitle from "../../hooks/useTitle";
 import AllReview from "./AllReview";
 
 const UserReview = () => {
   useTitle("My Review");
-  const { user } = useContext(UserContext);
+  const { user, logout } = useContext(UserContext);
   const [reviewData, setReviewData] = useState([]);
   const [isempty, setIsempty] = useState(true);
   const [message, setMessge] = useState("No reviews were added");
+  const nevigate = useNavigate();
 
   //  console.log("chember-token", localStorage.getItem("chember-token"));
   //https://b6a11-service-review-server-side-motiur-rahman-motiurrahman.vercel.app
@@ -23,12 +25,19 @@ const UserReview = () => {
       }
     )
       .then((res) => {
+        console.log("res", res.status);
+        if (res.status !== 200) {
+          logout()
+            .then(() => {
+              nevigate("/login");
+            })
+            .catch((err) => console.log(err));
+        }
         return res.json();
       })
       .then((data) => {
-        console.log("data", data);
         setReviewData(data);
-        if (data.length != 0) {
+        if (data.length !== 0) {
           setIsempty(false);
           setMessge("");
         } else {

@@ -7,7 +7,8 @@ import useTitle from "../../../hooks/useTitle";
 
 const Regiatration = () => {
   useTitle("Registration");
-  const { user, loader, creteUser, googleLogin } = useContext(UserContext);
+  const { user, loader, creteUser, googleLogin, updateUser } =
+    useContext(UserContext);
   const [message, setMessage] = useState("");
   const [show, setShow] = useState(true);
   const nevigate = useNavigate();
@@ -19,6 +20,8 @@ const Regiatration = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    const displayName = form.displayName.value;
+    const photoURL = form.photoURL.value;
     const confirm_password = form.confirm_password.value;
     if (password !== confirm_password) {
       toast("Password did not match");
@@ -30,11 +33,19 @@ const Regiatration = () => {
 
     creteUser(email, confirm_password)
       .then((userCredential) => {
-        setShow(true);
         const user = userCredential.user;
         console.log(user);
-        nevigate("/login");
-        setMessage("");
+        const profile = { displayName, photoURL };
+        updateUser(profile)
+          .then(() => {
+            setShow(true);
+            nevigate("/login");
+            setMessage("");
+          })
+          .catch((error) => {
+            const errorMessage = error.message;
+            setMessage(errorMessage);
+          });
       })
       .catch((error) => {
         setShow(true);
@@ -61,6 +72,30 @@ const Regiatration = () => {
           <div className="card-body" data-theme="valentine">
             <h1 className="text-5xl font-bold">Register here!</h1>
             <form onSubmit={btnSubmit}>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Full Name</span>
+                </label>
+                <input
+                  type="text"
+                  name="displayName"
+                  placeholder="Enter Full Name"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">PhotoURL</span>
+                </label>
+                <input
+                  type="text"
+                  name="photoURL"
+                  placeholder="Enter photoURL"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
